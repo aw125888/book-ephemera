@@ -1,0 +1,127 @@
+{
+  "book_title": "My Brilliant Friend",
+  "author": "Elena Ferrante",
+  "cover": "my_brilliant_friend.jpg",
+  "fingerprint": {
+    "colors": [
+        "bronze", 
+        "amber earth", 
+        "copper flame", 
+        "taupe grey", 
+        "deep forest", 
+        "dark spruce", 
+        "rich mahogany", 
+        "ivory", 
+        "cerulean", 
+        "steel blue", 
+        "oxford navy", 
+        "baltic blue", 
+        "violet ray", 
+        "crimson violet", 
+        "intense cherry", 
+        "primary scarlet", 
+        "gunmetal"
+    ],
+
+    "atmosphere": [
+        "overbearing families", 
+        "loud bustle", 
+        "violent lethargy", 
+        "violent poverty", 
+        "constant anticipation of enormous violence",
+        "bright colors", 
+        "muted buildings", 
+        "broken down apartments", 
+        "loud love", 
+        "passionate declarations", 
+        "humour", 
+        "intense pride", 
+        "intense shame", 
+        "flags", 
+        "Valentine's day", 
+        "sour fruits"
+
+    ],
+
+    "things": [
+      "cotton", 
+      "poplin", 
+      "wedding dresses", 
+      "chrysanthemums",
+      "dark hair", 
+      "cruel machismo", 
+      "thin skin", 
+      "leather shoes", 
+      "dusty faces", 
+      "colored dolls", 
+      "shiny cars", 
+      "broken glass", 
+      "shifting eyes", 
+      "passionate kisses", 
+      "ripped pages", 
+      "sharks", 
+      "suits", 
+      "childish adults", 
+      "faded photographs",
+      "ropes", 
+      "class rifts", 
+      "hairy monsters", 
+      "universities", 
+      "piles and piles of books",
+      "oceans", 
+      "pica"
+    ],
+
+    "emotional_tones": [
+        "vibrant", 
+        "radical", 
+        "rational", 
+        "jealousy", 
+        "competition", 
+        "complex", 
+        "balanced", 
+        "fair", 
+        "fateful", 
+        "mysterious", 
+        "tender", 
+        "candid", 
+        "fiery", 
+        "crazy", 
+        "dirty", 
+        "blue-collar", 
+        "shrewd", 
+        "telenova", 
+        "enlightened", 
+        "angry", 
+        "brutish", 
+        "bitter", 
+        "sensitive", 
+        "graceful", 
+        "filled with love", 
+        "admiring", 
+        "worshiping", 
+        "headstrong"
+
+    
+    ],
+
+    "themes": [
+    "bogged down by circumstance", 
+    "is sisterhood a blessing or a curse", 
+    "platnic love", 
+    "romantic love", 
+    "familial love", 
+    "lifelong bonds", 
+    "lifelong scars", 
+    "escaping roots", 
+    "growth",
+    "violent patriarchy", 
+    "frantic love", 
+    "love and hate are two sides of the same coin"
+    ],
+
+    "voice": [
+      "gritty, raw, like slapping a piece of salted pork over pulled back, perfumed skin"
+    ]
+  }
+}

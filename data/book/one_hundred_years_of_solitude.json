@@ -1,0 +1,112 @@
+{
+  "book_title": "One Hundred Years Of Solitude",
+  "author": "Gabriel Garcia Márquez",
+  "cover": "one_hundred_years_of_solitude.jpg",
+  "fingerprint": {
+    "colors": [
+        "hot fuschia", 
+        "blazing flame", 
+        "strawberry red", 
+        "neon pink", 
+        "tomat", 
+        "navajo white", 
+        "azure mist",
+        "bone", 
+        "honeydew", 
+        "maroon"
+    ],
+
+    "atmosphere": [
+        "hothouse", 
+        "jungle", 
+        "magical forest", 
+        "a crazy man's dream",
+        "forgotten rooms", 
+        "carnivals", 
+        "muddy streets", 
+        "faded lace", 
+        "blooming orchids"
+    ],
+
+    "things": [
+        "spiders", 
+        "tangled vines", 
+        "love letters", 
+        "weeping saints", 
+        "bananas", 
+        "corn", 
+        "golden fields", 
+        "rust", 
+        "kisses", 
+        "saliva", 
+        "old men", 
+        "beards", 
+        "hairy navels", 
+        "poppies", 
+        "aged documents", 
+        "ghosts", 
+        "blood", 
+        "guts", 
+        "ice", 
+        "heat", 
+        "war", 
+        "butterflies", 
+        "ripe fruits", 
+        "rot",
+        "muscles", 
+        "fit youth", 
+        "learned schoalars", 
+        "silk", 
+        "death", 
+        "revenge", 
+        "grief",
+        "sticky skin"
+
+      ],
+
+    "emotional_tones": [
+        "lush", 
+        "nostalgic", 
+        "cyclical", 
+        "sweltering", 
+        "humid", 
+        "wet", 
+        "passionate", 
+        "decaying", 
+        "phantasmagoric", 
+        "incestuous", 
+        "loving", 
+        "hateful", 
+        "gross", 
+        "fatalistic", 
+        "inevitable", 
+        "yearning", 
+        "tender", 
+        "hilarious", 
+        "forgetful", 
+        "stubborn", 
+        "ignorant", 
+        "wise", 
+        "backwards", 
+        "cosmopolitan"
+
+
+    ],
+
+    "themes": [
+        "cyclical nature of history", 
+        "family", 
+        "love and obsession", 
+        "memory and forgetting", 
+        "rise and fall of civilisations", 
+        "political violence", 
+        "myth making", 
+        "enduracne of storytelling"
+    ],
+
+    "voice": [
+        "An old man that keeps rambling on and on and petting your leg but you can't help but become drawn in by the plot. Spittle"
+      
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "book_title": "1984",
+  "author": "George Orwell",
+  "cover": "1984.jpg",
+  "fingerprint": {
+    "colors": [
+        "iron grey", 
+        "midnight blue", 
+        "creamy yellow", 
+        "beige", 
+        "rainbow", 
+        "charcoal ash", 
+        "blackberry cream", 
+        "white", 
+        "flag red"
+    ],
+
+    "atmosphere": [
+        "jagged buildings", 
+        "dull brown artifices", 
+        "vintage stores", 
+        "bureaucracy", 
+        "brown bodies of water", 
+        "kinetic energy", 
+        "weapons", 
+        "concealed men", 
+        "scores of hidden armies", 
+        "sunglasses"
+    ],
+
+    "things": [
+        "yogurt", 
+        "pebbles", 
+        "grit", 
+        "yellow", 
+        "creamy yellow", 
+        "half-lidded eyes", 
+        "words of varying sizes", 
+        "large letters", 
+        "newspaper", 
+        "passionless relationships", 
+        "flickering hope", 
+        "huge boulders", 
+        "eyes", 
+        "pupils", 
+        "end game", 
+        "game show", 
+        "cameras", 
+        "grey skin", 
+        "documents", 
+        "technicalities", 
+        "parasites", 
+        "devil", 
+        "expressionless faces", 
+        "robots", 
+        "starchy clothing", 
+        "slivers of skin",
+        "hair strands", 
+        "softness", 
+        "hardness", 
+    "aging bodies"   ],
+
+    "emotional_tones": [
+        "glassy", 
+        "tender", 
+        "delicate", 
+        "brutal", 
+        "harsh", 
+        "trippy",
+        "illuminating", 
+        "bleak", 
+        "wiley", 
+        "crazy", 
+        "blurry"
+
+    ],
+
+    "themes": [
+        "futility of survival", 
+        "absolute necessity of love"
+    ],
+
+    "voice": [
+        "tuberculosis"
+      
+    ]
+  }
+}

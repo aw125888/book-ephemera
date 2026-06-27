@@ -1,0 +1,97 @@
+{
+  "book_title": "Go Tell It On The Mountain",
+  "author": "James Baldwin",
+  "cover": "go_tell_it_on_the_mountain.jpg",
+  "fingerprint": {
+    "colors": [
+        "rich mahogany", 
+        "clay soil", 
+        "burnt orange", 
+        "amber gold", 
+        "golden pollen", 
+        "dark violet", 
+        "indigo", 
+        "gunmetal", 
+        "berry lipstick", 
+        "oxblood", 
+        "burgundy"
+    ],
+
+    "atmosphere": [
+        "wooden pews", 
+        "washed floors", 
+        "wrinkled clothing", 
+        "tunics", 
+        "dry heat", 
+        "city rooftops", 
+        "small kitchens", 
+        "thunderstorms", 
+        "purple dreams", 
+        "hollywood glamour", 
+        "hushed theatres", 
+        "deserts", 
+        "room of mirrors", 
+        "room of miracles"
+    ],
+
+    "things": [
+
+        "smokeshows", 
+        "lace", 
+        "white gloves", 
+        "clear water", 
+        "subtle perfume", 
+        "heavy sweat", 
+        "parched mouth", 
+        "cracked lips", 
+        "shadowy figures", 
+        "phantoms", 
+        "sheared fur", 
+        "close-cropped haircuts", 
+        "birthday cards", 
+        "eye wrinkles", 
+        "dusty shoes", 
+        "porch chairs", 
+        "offering plates", 
+        "iron", 
+        "metal limbs", 
+        "heart attacks", 
+        "cross"
+
+    ],
+
+
+    "emotional_tones": [
+        "fervent", 
+        "intense", 
+        "yearning", 
+        "fake", 
+        "real", 
+        "cover", 
+        "flow", 
+        "dramatic", 
+        "oppresive", 
+        "introspective", 
+        "haunting", 
+        "accepting", 
+        "heartbroken", 
+        "anguished", 
+        "ecstatic", 
+        "tender"
+],
+
+    "themes": [
+        "faith", 
+        "salvation", 
+        "identity", 
+        "forgiveness", 
+        "judgement", 
+        "grace", 
+        "belonging"
+    ],
+
+    "voice": [ 
+        "a man who desparately needs chapstick"
+    ]
+  }
+}

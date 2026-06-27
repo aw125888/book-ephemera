@@ -1,0 +1,103 @@
+{
+  "book_title": "The Adventures of Pinnochio",
+  "author": "Carlo Collodi",
+  "cover": "adventures_of_pino.jpg",
+  "fingerprint": {
+    "colors": [
+        "lilac", 
+        "pastel pink", 
+        "rosewood", 
+        "inferno", 
+        "aquamarine", 
+        "spring green", 
+        "tropical teal", 
+        "sapphire sky", 
+        "baltic blue", 
+        "cherry blossom"
+    ],
+
+    "atmosphere": [
+        "fox dens", 
+        "narrow roads", 
+        "aquatic gardens", 
+        "white as snow", 
+        "communist", 
+        "fascist",
+        "soft", 
+        "flowering", 
+        "high collared", 
+        "sturdy cabinets", 
+        "small cottage", 
+        "warm tea"
+    ],
+
+    "things": [
+        "buttons", 
+        "delicate limbs", 
+        "ponies", 
+        "stuffed animals", 
+        "smiling children", 
+        "jellybeans", 
+        "clowns", 
+        "fairy queens", 
+        "glitter", 
+        "pale blue roses", 
+        "candles", 
+        "glass figurines", 
+        "disney princesses", 
+        "ballgowns", 
+        "deep blue oceans", 
+        "sea monsters", 
+        "snakes", 
+        "expressive animals", 
+        "crying children", 
+        "green vegetables", 
+        "gentle adults",
+        "cackling witches",
+        "ears", 
+        "snails",
+        "fox tails", 
+        "asthma", 
+        "velvet"
+    
+    ],
+
+    "emotional_tones": [
+        "flouncy", 
+        "scary", 
+        "obedient", 
+        "hard-working", 
+        "ecstasy", 
+        "fun", 
+        "hilarious", 
+        "exagerrated", 
+        "sober", 
+        "unique", 
+        "self-contained", 
+        "cannibalistic", 
+        "strong morals", 
+        "disciplinary", 
+        "vivid", 
+        "magical", 
+        "fantastical", 
+        "creepy", 
+        "naive"
+
+    ],
+
+    "themes": [
+        "growing up", 
+        "personal responsibility", 
+        "redemption", 
+        "temptation", 
+        "parental love", 
+        "poverty", 
+        "compassion"
+    ],
+
+    "voice": [ "an excited boy ballerina dancing, dancing, dancing. And then his ear gets bitten off."
+
+      
+    ]
+  }
+}

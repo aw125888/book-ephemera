@@ -1,0 +1,105 @@
+{
+  "book_title": "Arturo's Island",
+  "author": "Elsa Morante",
+  "cover": "arturos_island.jpg",
+  "fingerprint": {
+    "colors": [
+        "limestone white", 
+        "midnight navy", 
+        "dusty mauve", 
+        "orchid", 
+        "dark goldenrod", 
+        "soft fawn", 
+        "apricot cream", 
+        "jet black"
+
+    ],
+
+    "atmosphere": [
+       "sun-bleached cliffs", 
+       "radiant light", 
+       "dark rooms", 
+       "dirt walls", 
+       "dirty clothing", 
+       "wild gardens", 
+       "endless horizons", 
+       "rocks", 
+       "lukewarm coffee", 
+       "soft rugs", 
+       "a mother's embrace", 
+       "pudgy arms", 
+       "thin legs"
+    ],
+
+    "things": [
+        "seabirds", 
+        "veils", 
+        "mesh", 
+        "rough tunics", 
+        "mournful singing", 
+        "tan skin", 
+        "the olympics", 
+        "superheroes", 
+        "cruel eyes", 
+        "pale hair", 
+        "smooth bodies", 
+        "salt", 
+        "tight hugs", 
+        "hard passion", 
+        "erotic desire", 
+        "yellow sand", 
+        "large eyes", 
+        "odes" , 
+        "adolescence", 
+        "misty figures", 
+        "high jumps", 
+        "foreshadowing", 
+        "vices", 
+        "skinny cats", 
+        "loving dogs", 
+        "snore"
+    ],
+
+    "emotional_tones": [
+        "homosocial", 
+        "primitive", 
+        "poor", 
+        "isolated", 
+        "simple", 
+        "fierce", 
+        "passionate", 
+        "angsty", 
+        "cruel", 
+        "abusive", 
+        "beautiful", 
+        "raw", 
+        "tender", 
+        "affectionate", 
+        "cold", 
+        "holy",
+        "arrogant", 
+        "machismo", 
+        "worship", 
+        "yearning", 
+        "narcissistic"
+    ],
+
+    "themes": [
+        "fatherhood", 
+        "loneliness", 
+        "inceldom", 
+        "disillusionment", 
+        "unbounded love", 
+        "naive ambition", 
+        "masculinity", 
+        "belonging", 
+        "escape", 
+        "on and outwards"
+    ],
+
+    "voice": [ "a vulpine man strokes his beardless face and slowly shakes a bottle of sand over a piece of ivory-colored soap"
+
+      
+    ]
+  }
+}

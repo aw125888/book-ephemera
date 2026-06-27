@@ -1,0 +1,105 @@
+{
+  "book_title": "Heatwave",
+  "author": "Victor Jestin",
+  "cover": "heatwave.jpg",
+  "fingerprint": {
+    "colors": [
+        "wild strawberry", 
+        "hot pink", 
+        "neon rose", 
+        "digital blue", 
+        "pure red", 
+        "neon chartreuse", 
+        "hyper magenta", 
+        "lilac",
+         "cayenne red", 
+         "stormy teal", 
+         "sick grey"
+
+    ],
+
+    "atmosphere": [
+        "pregnant bellies", 
+        "languorous lips", 
+        "gritty sand", 
+        "bonfires", 
+        "loud music", 
+        "flashing lights", 
+        "white lights", 
+        "deep ocean", 
+        "cicada songs", 
+        "grey towels", 
+        "bad breath"
+    ],
+
+    "things": [
+        "sand dunes", 
+        "corpse", 
+        "vomit", 
+        "public showers", 
+        "toes", 
+        "swings", 
+        "finger nails", 
+        "cherries", 
+        "sticky stains", 
+        "ropes", 
+        "screens", 
+        "cigarettes", 
+        "ribs", 
+        "pudge", 
+        "freckles", 
+        "elbows", 
+        "bunnies", 
+        "embraces", 
+        "tents", 
+        "body hair", 
+        "eczema", 
+        "hearts", 
+        "furnace", 
+        "masturbation"
+
+    ],
+
+
+    "emotional_tones": [
+        "nauseous", 
+        "hot", 
+        "disgusting", 
+        "sticky", 
+        "compelling", 
+        "claustrophobic", 
+        "stretched-out", 
+        "vulgar", 
+        "overstimulating", 
+        "calm", 
+        "anxious", 
+        "lustful", 
+        "violent", 
+        "shameful", 
+        "hollow", 
+        "performative", 
+        "juvenile", 
+        "hopeful", 
+        "clunky", 
+        "sparse", 
+        "apathetic"
+
+],
+
+    "themes": [
+        "adolescence", 
+        "moral indifference", 
+        "guilt", 
+        "physical overstimulation", 
+        "masculinity", 
+        "responsibility", 
+        "forced edginess", 
+        "eerie ingenue"
+
+    ],
+
+    "voice": [ 
+       "the little boy you are babysitting stabs you then calmly smooths a bandage over the gaping wound"
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "book_title": "Bel Canto",
+  "author": "Ann Patchett",
+  "cover": "bel_canto.jpg",
+  "fingerprint": {
+    "colors": [
+        "electric red", 
+        "powder blush", 
+        "scarlet rush", 
+        "tangerine dream", 
+        "peach blossom", 
+        "dark coffee", 
+        "wheat", 
+        "bright lemon", 
+        "sage green", 
+        "celadon", 
+        "electric green", 
+        "honeydew", 
+        "mint glow", 
+        "cornflower blue", 
+        "periwinkle", 
+        "lavender purple", 
+        "blackberry cream", 
+        "bubblegum pink", 
+        "light coral", 
+        "grapefruit pink", 
+        "watermelon"
+    ],
+
+    "atmosphere": [
+        "hothouse", 
+        "exotic plants", 
+        "humid air", 
+        "squelchy ground", 
+        "piles of petals", 
+        "blue dismal february", 
+        "venus flytrap", 
+        "symphony",
+        "passionate culmination", 
+        "warzone", 
+        "still air", 
+        "enclosed spaces"
+    ],
+
+    "things": [
+        "blushing cheeks", 
+        "burnished arms", 
+        "the chase", 
+        "unexpected kisses", 
+        "valentine's day", 
+        "lovers",
+        "flamenco dancers", 
+        "opera singers", 
+        "beautiful mansions", 
+        "well-groomed gardens", 
+        "bushy eyebrows", 
+        "wrinkled faces", 
+        "intimate friends", 
+        "unexpected violence", 
+        "unexpected tragedy", 
+        "mercy", 
+        "orphans", 
+        "cavities", 
+        "silk gowns", 
+        "orchids", 
+        "cereus blooms in the night"
+
+    ],
+
+    "emotional_tones": [
+        "whimsical", 
+        "romantic", 
+        "unrealistic", 
+        "fanciful", 
+        "violent", 
+        "sobering", 
+        "mushy", 
+        "too much", 
+        "erotic", 
+        "lusty", 
+        "sweet", 
+        "absurd", 
+        "filled to the brim with love", 
+        "fantastical", 
+        "luminous", 
+        "ornate"
+
+    ],
+
+    "themes": [
+        "love in impossible circumstances", 
+        "the power of violence", 
+        "the power of love", 
+        "sacrifice", 
+        "universal languages"
+
+    ],
+
+    "voice": [ 
+        "if a pink origami swan and a venus fly-trap had a baby that kissed and then ate you"
+      
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "book_title": "The Doloriad",
+  "author": "Missouri Williams",
+  "cover": "the_doloriad.jpg",
+  "fingerprint": {
+    "colors": [
+      "turquoise",
+      "oxblood",
+      "dried clay",
+      "bruise purple",
+      "mauve shadow", 
+      "creamy yellow", 
+      "urine beige", 
+      "gummy pink", 
+      "grape soda", 
+      "mustard ochre", 
+      "charcoal ash", 
+      "pitch black", 
+      "goldenrod",
+    "stone brown"
+    ],
+
+    "atmosphere": [
+        "earthy forest", 
+        "squishy", 
+        "failing bodies", 
+        "sticky walls", 
+        "vomit", 
+        "sweet sweat", 
+        "ruined suburbs", 
+        "acid bitten furniture", 
+        "peeling skin", 
+        "moldy youth", 
+        "anonymous cities", 
+        "overgrown gardens", 
+        "giant radio antennas", 
+        "cruel encampments", 
+        "moth-infested lairs",
+        "dark stone catacombs", 
+        "abandoned cities",
+        "abandoned supermarkets"
+    ],
+
+    "things": [
+      "missing limbs", 
+      "smiling children", 
+      "cruel erotic desires", 
+      "unwanted pregnancies", 
+      "ketchup stain", 
+      "perverted dogs", 
+      "child murderers", 
+      "frail bodies", 
+      "bright voids",
+      "rot", 
+      "thighs", 
+      "melting fat", 
+      "pimples", 
+      "sweat", 
+      "aphrodisiac", 
+      "thick forest", 
+      "teaming rivers", 
+      "wispy hair", 
+      "larvae", 
+      "bodily fatness", 
+      "lumps", 
+        "rotten heart", 
+        "laughing gods", 
+        "fluffy sheep", 
+        "ethnically ambiguous", 
+        "high-octave notes", 
+        "low-octave notes",
+        "adam and eve"
+    ],
+
+    "emotional_tones": [
+        "tongue-in-cheek",
+        "biblical", 
+        "bleak", 
+        "unsparing", 
+        "gross", 
+        "incestuous", 
+        "nauseous", 
+        "lethargic", 
+        "violent", 
+        "looming", 
+        "provocative", 
+        "unsettling", 
+        "bizarre", 
+        "comic", 
+        "greasy", 
+        "tragic",
+        "meta",
+        "roving", 
+        "morally ambiguous", 
+        "wicked", 
+        "funny", 
+        "radical", 
+        "vulgar"
+    
+    ],
+
+    "themes": [
+    "violence for the sake of violence",
+    "human brutality", 
+    "perverse eroticism",  
+    "philosophical meditation", 
+    "alienated humanity", 
+    "physicality as hierarchy", 
+    "family saga", 
+    "collapse of order", 
+    "privilege", 
+    "what is human", 
+    "struggle", 
+    "shock value", 
+    "surprisingly funny"
+    ],
+
+    "voice": [
+      "It's a dense wasteland baby"
+    ]
+  }
+}

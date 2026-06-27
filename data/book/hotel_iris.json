@@ -1,0 +1,110 @@
+{
+  "book_title": "Hotel Iris",
+  "author": "Yoko Ogawa",
+  "cover": "hotel_iris.jpg",
+  "fingerprint": {
+    "colors": [
+        "deep purple", 
+        "shimmering blue", 
+        "ivory", 
+        "blush", 
+        "pacific blue", 
+        "velvet orchid", 
+        "indigo", 
+        "slate blue", 
+        "dark rasberry"
+
+    ],
+
+    "atmosphere": [
+        "ingenue", 
+        "intricate maze", 
+        "small castles", 
+        "grainy rice", 
+        "silent rooms", 
+        "craggy women", 
+        "dank motels", 
+        "sea-facing balconies", 
+        "spoiled food", 
+        "crushed plants", 
+        "browning skin", 
+        "running mice", 
+        "fog", 
+        "grey islands", 
+        "warm alcoves", 
+        "poison", 
+        "romantic entaglements", 
+        "fear", 
+        "translation", 
+        "throats", 
+        "white laquer", 
+        "cheap detergent"
+
+    ],
+
+    "things": [
+        "simmering oil", 
+        "ribbons", 
+        "bows", 
+        "camellia flowers", 
+        "tight ponytails", 
+        "eyelashes", 
+        "deer", 
+        "disfigurement", 
+        "glass animals", 
+        "ice", 
+        "fingers", 
+        "expressionless faces", 
+        "cruel mothers", 
+        "styrafoam cups", 
+        "peeling cheeks", 
+        "harelips", 
+        "snakes", 
+        "balding crowns", 
+        "bloody smiles", 
+        "voodoo dolls", 
+        "wide-set eyes", 
+        "yellow teeth",
+        "jellyfish", 
+        "shark", 
+        "goosebumps", 
+        "thin parchment"
+
+
+    ],
+
+
+    "emotional_tones": [
+        "challenging", 
+        "murky", 
+        "pretty", 
+        "violent", 
+        "sensual", 
+        "sexual", 
+        "painful", 
+        "represed", 
+        "quiet", 
+        "mesmirizing", 
+         "twitching", 
+         "confusing", 
+         "enigmatic", 
+         "tender", 
+         "cruel", 
+         "austere"
+],
+
+    "themes": [
+        "connection", 
+        "intimacy", 
+        "pleasure", 
+        "love", 
+        "adolescence", 
+        "young meets old"
+
+    ],
+
+    "voice": [ 
+       "you embrace the stinging, lavender jellyfish"
+    ]
+  }
+}

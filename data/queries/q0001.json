@@ -1,0 +1,22 @@
+{
+    "images": [
+        "img_0001",
+        "img_0002",
+        "img_0003"
+    ],
+    "memory": "mem1.json",
+
+    "results": "01. 2.0625  Breasts and Eggs — Mieko Kawakami
+02. 0.4578  1984 — George Orwell
+03. 0.3914  Moshi Moshi — Banana Yoshimoto
+04. 0.2542  Hotel Iris — Yoko Ogawa
+05. 0.2393  Bel Canto — Ann Patchett
+06. 0.1940  One Hundred Years Of Solitude — Gabriel Garcia Márquez
+07. 0.1890  The Doloriad — Missouri Williams
+08. 0.1511  Heatwave — Victor Jestin
+09. 0.0624  Arturo's Island — Elsa Morante
+10. -0.0045  Las Babas Del Diablo — Julio Cortázer
+11. -0.2810  My Brilliant Friend — Elena Ferrante
+12. -0.3606  Go Tell It On The Mountain — James Baldwin
+13. -0.6294  The Adventures of Pinnochio — Carlo Collodi"
+}

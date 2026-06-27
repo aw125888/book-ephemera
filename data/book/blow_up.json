@@ -1,0 +1,98 @@
+{
+  "book_title": "Las Babas Del Diablo",
+  "author": "Julio Cortázer",
+  "cover": "blow_up.jpg",
+  "fingerprint": {
+    "colors": [
+        "milky yellow", 
+        "stone grey", 
+        "alabaster", 
+        "white smoke", 
+        "silver", 
+        "cool steel", 
+        "granite", 
+        "onyx", 
+        "alice blue", 
+        "porcelain", 
+        "ghost white", 
+        "bright snow", 
+        "sky reflection", 
+        "frozen lake"
+
+    ],
+
+    "atmosphere": [
+        "flowing river", 
+        "cold parisian morning", 
+        "frigid sun", 
+        "camera flash", 
+        "dazzling water", 
+        "dusty room", 
+        "open sky", 
+        "generous sun", 
+        "bubbling stream", 
+        "interrogation rooms", 
+        "silver benches"
+    ],
+
+    "things": [
+        "mint plants", 
+        "silver metal", 
+        "revolvers", 
+        "malnourished children", 
+        "teenage boys", 
+        "fur coats", 
+        "expired lipstick", 
+        "stained teeth", 
+        "cigarettes", 
+        "sun-warmed clothing", 
+        "disturbing screams", 
+        "centipedes", 
+        "legs", 
+        "guilt", 
+        "clear skies", 
+        "metal rods", 
+        "anonymous hotel rooms", 
+        "moldy walls", 
+        "mirrors", 
+        "stone statues", 
+        "blackbirds", 
+        "sharp cheekbones"
+
+    ],
+
+    "emotional_tones": [
+        "quenching", 
+        "delicate", 
+        "strange", 
+        "gossamer", 
+        "violent", 
+        "sinister", 
+        "pretty",  
+        "brilliant", 
+        "simple", 
+        "confusing", 
+        "overdramatic", 
+        "horrifying", 
+        "mounting",   
+        "paranoid", 
+        "hypnotic", 
+        "curious"
+
+],
+
+    "themes": [
+        "instable reality", 
+        "memory", 
+        "the uncanny", 
+        "perceived violence", 
+        "flirtation", 
+        "storytelling"
+    ],
+
+    "voice": [ 
+        "He is having a stroke."
+      
+    ]
+  }
+}

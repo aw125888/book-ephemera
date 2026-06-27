@@ -1,0 +1,108 @@
+{
+  "book_title": "Moshi Moshi",
+  "author": "Banana Yoshimoto",
+  "cover": "moshi_moshi.jpg",
+  "fingerprint": {
+    "colors": [
+      "spring green",
+      "dark blue",
+      "soft gray",
+      "alice blue",
+      "seagrass"
+    ],
+
+    "atmosphere": [
+      "cold winter air",
+        "snow",
+      "wind through trees",
+      "clear stream",
+      "bird eating a flower",
+      "cat jumping from a height",
+      "steamy windows",
+      "cleanliness",
+      "sparkling stars", 
+      "twilight",
+      "radiance",
+        "independent restaurants",
+      "side streets",
+      "wandering small shops",
+      "cute bars"
+    ],
+
+    "things": [
+      "warm coffee",
+      "cool ice cubes",
+      "a cool drink",
+      "hearty soup",
+      "cooked rice",
+      "warm rice cake",
+      "barley salad",
+      "crunchy lettuce",
+      "ceramic cups",
+      "chipped teacups",
+      "telephone wires", 
+        "funny ghosts",
+      "sad ghosts",
+      "smiling ghosts",
+      "lingering ghosts",
+      "love letter",
+      "polka dots", 
+    "familiar flavors",
+    "ambiguous lovers",
+      "unknowable lover",
+      "careless man",
+      "distant mothers",
+      "cruel fathers",
+      "imperfect families",
+      "complicated love",
+      "people drifting apart"
+    ],
+    "emotional_tones": [
+      "grief",
+      "humour",
+      "unexpected kindness",
+      "gentle resilience",
+      "subtle joy",
+      "naivety",
+      "maudlin",
+      "strange",
+      "quirky",
+      "annoying",
+      "brutal honesty",
+      "acceptance without closure",
+      "loneliness shared",
+      "solitary walk"
+    ],
+
+    "themes": [
+    "young connects with old",
+      "passing",
+      "flow of time",
+      "too much time",
+      "surprising revelation",
+      "beauty after tragedy",
+      "beauty in tradition",
+      "beauty in the ancient",
+      "pure enigma",
+      "cruel decisions",
+      "unknowable decisions",
+      "masking worries",
+      "escape from worries",
+      "no worries",
+      "youthful epiphany",
+      "deep awareness of being just a speck in the universe",
+    "unexpected darkness overcome by unexpected lightness",
+      "finding your appetite",
+      "losing your appetite",
+      "nauseous gentle leisure", 
+      "passion through food", 
+      "patience with the world"
+    ],
+
+    "voice": [
+      "like a human drama written by an alien who only knows about earthlings from memes and daytime soaps"
+    ]
+  }
+}
+
+

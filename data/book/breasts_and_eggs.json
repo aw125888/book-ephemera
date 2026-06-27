@@ -1,0 +1,104 @@
+{
+  "book_title": "Breasts and Eggs",
+  "author": "Mieko Kawakami",
+  "cover": "breasts_and_eggs.jpg",
+  "fingerprint": {
+    "colors": [
+        "grape purple", 
+        "pastel yellow", 
+        "iris blue", 
+        "shimmery lavender", 
+        "blue grey", 
+        "sky reflection", 
+        "cool horizon", 
+        "periwinkle", 
+        "wisteria", 
+        "ivory mist", 
+        "pale slate"
+    ],
+
+    "atmosphere": [
+        "summer nights", 
+        "sweltering heat", 
+        "busy subway lines", 
+        "muted carnivals", 
+        "squat buildings", 
+        "flat cafes", 
+        "windowless rooms", 
+        "hard carpets", 
+        "latticed mats", 
+        "luminous bars", 
+        "calm horizons", 
+        "crickets"
+
+    ],
+
+    "things": [
+        "bitter tea", 
+        "crying babies", 
+        "thin shoulders", 
+        "dirty tank tops", 
+        "bloodshot eyes", 
+        "milk", 
+        "cranberries", 
+        "bent backs", 
+        "uneven canines", 
+        "yellow teeth", 
+        "menacing old men", 
+        "quiet love", 
+        "old computers", 
+        "vomit", 
+        "body odor", 
+        "journeys", 
+        "pixies", 
+        "calla lilies", 
+        "jimson weed", 
+        "high heels", 
+        "brown stockings", 
+        "laundromats", 
+        "hair ties", 
+        "paper cups"
+    ],
+
+
+    "emotional_tones": [
+        "obsessive", 
+        "passive", 
+        "calm", 
+        "melancholic", 
+        "nostalgic", 
+        "wise", 
+        "worried", 
+        "nauseous", 
+        "disgusted", 
+        "magical", 
+        "romantic", 
+        "mortifying", 
+        "shameful", 
+        "sharp", 
+        "dull", 
+        "fuzzy", 
+        "vulgar", 
+        "secure", 
+        "selfish", 
+        "resiliant"
+
+
+],
+
+    "themes": [
+        "conservatism", 
+        "radicalism", 
+        "motherhood", 
+        "loneliness", 
+        "desire", 
+        "intimacy", 
+        "privacy", 
+        "bodies"
+    ],
+
+    "voice": [ 
+        "the girl keeps murmuring and you can't hear what she's saying and she's tapping your teeth and you fall asleep"
+    ]
+  }
+}
