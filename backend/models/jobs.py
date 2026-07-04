@@ -18,6 +18,7 @@ class Job:
     title: Optional[str] = None
     author: Optional[str] = None
     cover_image: Optional[str] = None
+    goodreads_url: Optional[str] = None
 
     embedding_started: bool = False
     error: Optional[str] = None

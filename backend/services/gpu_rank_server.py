@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from backend.services.embedding_service import recommend_book
+from .gpu_embedding_service import recommend_book
 
 app = FastAPI()
 

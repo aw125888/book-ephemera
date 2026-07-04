@@ -26,6 +26,7 @@ def reset_job_for_rerun(job) -> None:
     job.title = None
     job.author = None
     job.cover_image = None
+    job.goodreads_url = None
     job.error = None
 
 
@@ -39,6 +40,7 @@ def run_embedding(job_id: str) -> None:
         job.title = result["book_title"]
         job.author = result["author"]
         job.cover_image = result["cover_image"]
+        job.goodreads_url = result["goodreads_url"]
         job.status = "ready"
     except Exception as e:
         job.status = "error"
@@ -182,6 +184,7 @@ async def get_job_status(job_id: str):
         "combined_text": job.combined_text,
         "title": job.title,
         "cover_image": job.cover_image,
+        "goodreads_url": job.goodreads_url, 
         "error": job.error,
         "created_at": job.created_at,
     }

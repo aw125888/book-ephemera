@@ -14,40 +14,33 @@ type JobResponse = {
   title?: string;
   author?: string;
   cover_image?: string;
+  goodreads_url?:string; 
 };
 
 export default function ResultsScreen({ next }: ResultsScreenProps) {
-  const [status, setStatus] = useState("processing");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [coverImage, setCoverImage] = useState("");
+  const [goodreads_url, setURL] = useState("");
 
   useEffect(() => {
     const jobId = localStorage.getItem("book-ephemera-job-id");
     if (!jobId) return;
-
-    const poll = async () => {
-      try {
-        const response = await fetch(`${BACKEND_URL}/api/jobs/${jobId}`);
+    
+    const loadJob = async ()=> {
+      const response = await fetch(`${BACKEND_URL}/api/jobs/${jobId}`)
         if (!response.ok) return;
 
         const data: JobResponse = await response.json();
 
-        setStatus(data.status);
-
         if (data.title) setTitle(data.title);
         if (data.author) setAuthor(data.author);
         if (data.cover_image) setCoverImage(data.cover_image);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    poll();
-    const interval = setInterval(poll, 1000);
-
-    return () => clearInterval(interval);
+        if (data.goodreads_url) setURL(data.goodreads_url); 
+    }; 
+    loadJob (); 
   }, []);
+    
 
   const coverSrc =
     coverImage.startsWith("http") || coverImage.startsWith("/")
@@ -74,36 +67,22 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
 
       {/* Content */}
       <div className="relative z-10 flex h-screen flex-col items-center justify-center px-6">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute left-1/2 top-[12%] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serif text-6xl tracking-[-0.04em] text-gray-300"
-        >
-          Your Book:
-        </motion.h1>
-
-        <AnimatePresence mode="wait">
-          {status !== "ready" ? (
+        <AnimatePresence>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="absolute left-1/2 top-[8%] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serif text-5xl tracking-[-0.04em] text-gray-300"
+          >
+            Your Next Read:
+          </motion.h1>
             <motion.div
-              key="loading"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-5xl italic text-white/80"
-            >
-              Baking...Baking...
-            </motion.div>
-          ) : (
-            <motion.div
-              key="result"
               initial={{ opacity: 0, scale: 0.98, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col items-center gap-5 text-center"
             >
-              {coverSrc ? (
+              
                 <div className="overflow-hidden rounded-2xl shadow-[0_18px_50px_rgba(0,0,0,0.35)]">
                   <img
                     src={coverSrc}
@@ -111,11 +90,7 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
                     className="h-[420px] w-[280px] object-cover"
                   />
                 </div>
-              ) : (
-                <div className="flex h-[420px] w-[280px] items-center justify-center rounded-2xl border border-white/20 bg-white/5 text-white/60">
-                  No cover image
-                </div>
-              )}
+              
 
               <div className="max-w-2xl">
                 <div className="font-serif text-4xl tracking-[-0.04em] text-gray-100">
@@ -126,20 +101,30 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
                 </div>
               </div>
             </motion.div>
-          )}
+          
         </AnimatePresence>
-
-        {status === "ready" && (
           <motion.button
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             onClick={next}
-            className="fixed bottom-10 left-1/2 -translate-x-1/2 font-serif text-4xl tracking-[-0.04em] text-gray-300 transition-transform duration-500 hover:translate-x-2"
+            className="fixed bottom-10 left-1/2 -translate-x-1/2 font-serif text-3xl tracking-[-0.04em] text-gray-300 transition-transform duration-500 hover:translate-x-2"
           >
             Back →
           </motion.button>
-        )}
+
+          <div className="mt-4 flex flex-col items-center gap-3">
+            <button
+              type="button"
+              className="rounded-full border border-gray-300/40 bg-white/10 px-6 py-3 font-serif text-xl tracking-[-0.03em] text-gray-100 transition hover:bg-white/20"
+
+              onClick={() => window.open(goodreads_url, "_blank", "noopener,noreferrer")}
+            >
+              Add to Goodreads!
+            </button>
+
+
+        </div>
       </div>
     </main>
   );

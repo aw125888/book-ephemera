@@ -21,8 +21,7 @@ type LoadingScreenProps = {
 type SwirlWordsProps = {
   words: string[];
   jobStatus: JobStatus;
-  elapsedMs: number;
-  onNext: () => void;
+  onNext?: () => void;
   nextLabel?: string;
   bakingLabel?: string;
 };
@@ -38,6 +37,16 @@ const SIZE_CLASSES = [
 ];
 
 const COLOR_CLASSES = ["text-white", "text-sky-200", "text-violet-200"];
+
+// --- UPDATED ANIMATION CONFIGURATION ---
+const BAKING_MS = 5000;          
+const WORD_STAGGER_MS = 220;     
+const START_RADIUS = 15;         
+const SPIRAL_RADIUS_STEP = 14;   
+const SPIRAL_ANGLE_STEP = 0.45;  
+const DEPLOY_SPEED = 140;        
+const WOBBLE_SIZE = 3;           
+// ---------------------------------------
 
 function shuffle<T>(items: T[]) {
   const arr = [...items];
@@ -84,139 +93,20 @@ function useViewport() {
 function SwirlWords({
   words,
   jobStatus,
-  elapsedMs,
   onNext,
-  nextLabel = "Ready! →",
-  bakingLabel = "Baking...Baking...",
+  nextLabel = "Ready! ->",
+  bakingLabel = "baking",
 }: SwirlWordsProps) {
   const viewport = useViewport();
+  
+  // 1. Cut the text off at a strict maximum of 48 words
+  const slicedWords = useMemo(() => {
+    const shuffled = shuffleNotSame(words);
+    return shuffled.slice(0, 48);
+  }, [words]);
 
-  const shuffledWords = useMemo(() => shuffleNotSame(words), [words]);
-
-  const [revealedCount, setRevealedCount] = useState(0);
-
-  useEffect(() => {
-    setRevealedCount(0);
-
-    if (shuffledWords.length === 0) return;
-
-    const startDelay = 5000;
-    const stagger = 140;
-    const timers: number[] = [];
-
-    shuffledWords.forEach((_, index) => {
-      timers.push(
-        window.setTimeout(() => {
-          setRevealedCount((current) => Math.max(current, index + 1));
-        }, startDelay + index * stagger)
-      );
-    });
-
-    return () => {
-      timers.forEach((id) => window.clearTimeout(id));
-    };
-  }, [shuffledWords]);
-
-  const showWords = jobStatus === "ready" && elapsedMs >= 5000;
-  const nextEnabled = jobStatus === "ready" && elapsedMs >= 10000;
-
-  const centerX = viewport.width / 2;
-  const centerY = viewport.height / 2;
-  const maxRadius = Math.min(viewport.width, viewport.height) * 0.34;
-  const turns = 2.5;
-
-  const swirlProgress =
-    shuffledWords.length === 0 ? 1 : Math.max(0.12, revealedCount / shuffledWords.length);
-
-  return (
-    <div className="relative h-full w-full overflow-hidden">
-      <AnimatePresence mode="wait">
-        {!showWords ? (
-          <motion.div
-            key="baking"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-5xl italic text-white/80"
-          >
-            {bakingLabel}
-          </motion.div>
-        ) : (
-          <motion.div
-            key="swirl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0"
-          >
-            {shuffledWords.map((word, index) => {
-              const total = Math.max(1, shuffledWords.length - 1);
-              const t = index / total;
-
-              const angle = t * Math.PI * 2 * turns + index * 0.12;
-              const radius = maxRadius * (0.06 + 0.94 * t) * swirlProgress;
-
-              const x = centerX + Math.cos(angle) * radius;
-              const y = centerY + Math.sin(angle) * radius;
-
-              const sizeClass = SIZE_CLASSES[index % SIZE_CLASSES.length];
-              const colorClass = COLOR_CLASSES[index % COLOR_CLASSES.length];
-              const visible = index < revealedCount;
-
-              return (
-                <span
-                  key={`${word}-${index}`}
-                  className={`pointer-events-none absolute select-none whitespace-nowrap font-serif transition-all duration-700 ease-out ${sizeClass} ${colorClass} ${
-                    visible ? "opacity-100" : "opacity-0"
-                  }`}
-                  style={{
-                    left: x,
-                    top: y,
-                    transform: `translate(-50%, -50%) scale(${0.86 + swirlProgress * 0.22})`,
-                    letterSpacing: "0.02em",
-                    fontWeight: 300 + (index % 2) * 100,
-                  }}
-                >
-                  {word}
-                </span>
-              );
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {jobStatus === "ready" && (
-          <motion.button
-            key="next"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: nextEnabled ? 1 : 0.35 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            onClick={onNext}
-            disabled={!nextEnabled}
-            className={`fixed bottom-10 left-1/2 -translate-x-1/2 font-serif text-4xl tracking-[-0.04em] ${
-              nextEnabled ? "text-white" : "cursor-not-allowed text-white/50"
-            }`}
-          >
-            {nextLabel}
-          </motion.button>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
-
-export default function LoadingScreen({ next }: LoadingScreenProps) {
-  const [combinedText, setCombinedText] = useState("");
-  const [status, setStatus] = useState<JobStatus>("processing");
-  const [images, setImages] = useState<string[]>([]);
-  const [jobId, setJobId] = useState<string | null>(null);
   const [elapsedMs, setElapsedMs] = useState(0);
-
-  useEffect(() => {
-    setJobId(localStorage.getItem(JOB_KEY));
-  }, []);
+  const [showReadyButton, setShowReadyButton] = useState(false);
 
   useEffect(() => {
     let raf = 0;
@@ -229,6 +119,121 @@ export default function LoadingScreen({ next }: LoadingScreenProps) {
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const visibleCount = useMemo(() => {
+    if (elapsedMs < BAKING_MS) return 0;
+    return Math.min(
+      slicedWords.length,
+      Math.floor((elapsedMs - BAKING_MS) / WORD_STAGGER_MS) + 1
+    );
+  }, [elapsedMs, slicedWords.length]);
+
+  const allWordsOut = slicedWords.length > 0 && visibleCount >= slicedWords.length;
+
+  // 2. Control transition: Trigger crossfade only when all 60 words are fully out AND backend status is "ready"
+  useEffect(() => {
+    if (allWordsOut && jobStatus === "ready") {
+      const timer = setTimeout(() => {
+        setShowReadyButton(true);
+      }, 600); // Tiny holding pause on completion before fading
+      return () => clearTimeout(timer);
+    } else {
+      setShowReadyButton(false);
+    }
+  }, [allWordsOut, jobStatus]);
+
+  const centerX = viewport.width / 2;
+  const centerY = viewport.height / 2;
+  const maxAllowedRadius = Math.min(viewport.width, viewport.height) * 0.45;
+
+  return (
+    <div className="relative h-full w-full overflow-hidden">
+      {/* Baking State Overlay */}
+      <div
+        className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1000 ${
+          elapsedMs < BAKING_MS ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <span className="select-none font-serif text-3xl font-light uppercase tracking-[0.35em] text-white/40">
+          {bakingLabel}
+        </span>
+      </div>
+
+      {/* Swirling Words Wrapper - Smoothly dissolves completely out of view */}
+      <div 
+        className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+        style={{ opacity: showReadyButton ? 0 : 1, pointerEvents: showReadyButton ? 'none' : 'auto' }}
+      >
+        {slicedWords.map((word, index) => {
+          const revealAt = BAKING_MS + index * WORD_STAGGER_MS;
+          const visible = elapsedMs >= revealAt;
+
+          const ageMs = Math.max(0, elapsedMs - revealAt);
+          const ageSeconds = ageMs / 1000;
+
+          const targetRadius = START_RADIUS + index * SPIRAL_RADIUS_STEP;
+          const baseRadius = Math.min(ageSeconds * DEPLOY_SPEED, targetRadius);
+          const angle = (baseRadius / SPIRAL_RADIUS_STEP) * SPIRAL_ANGLE_STEP - Math.PI / 2;
+          const wobble = Math.sin(ageSeconds * 3 + index * 0.5) * WOBBLE_SIZE;
+          const radius = Math.min(baseRadius + wobble, maxAllowedRadius);
+
+          const x = centerX + Math.cos(angle) * radius;
+          const y = centerY + Math.sin(angle) * radius;
+
+          const sizeClass = SIZE_CLASSES[index % SIZE_CLASSES.length];
+          const colorClass = COLOR_CLASSES[index % COLOR_CLASSES.length];
+
+          return (
+            <span
+              key={`${word}-${index}`}
+              className={`pointer-events-none absolute select-none whitespace-nowrap font-serif ${sizeClass} ${colorClass}`}
+              style={{
+                left: x,
+                top: y,
+                transform: `translate(-50%, -50%) scale(${visible ? 1 : 0.6})`,
+                opacity: visible ? 1 : 0,
+                transition: "opacity 400ms ease-out, transform 400ms ease-out",
+                letterSpacing: "0.02em",
+                fontWeight: 300 + (index % 2) * 100,
+              }}
+            >
+              {word}
+            </span>
+          );
+        })}
+      </div>
+
+      {/* 3. Minimalist Centered White Serif Action Button Fade-in */}
+      <AnimatePresence>
+        {showReadyButton && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <motion.button
+              key="next"
+              initial={{ opacity: 0, scale: 0.96, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              onClick={onNext}
+              className="pointer-events-auto font-serif text-4xl font-light uppercase tracking-[0.25em] text-white transition-all duration-700 hover:tracking-[0.35em] hover:text-white/80"
+            >
+              {nextLabel}
+            </motion.button>
+          </div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export default function LoadingScreen({ next }: LoadingScreenProps) {
+  const [combinedText, setCombinedText] = useState("");
+  const [status, setStatus] = useState<JobStatus>("processing");
+  const [images, setImages] = useState<string[]>([]);
+  const [jobId, setJobId] = useState<string | null>(null);
+
+  useEffect(() => {
+    setJobId(localStorage.getItem(JOB_KEY));
   }, []);
 
   useEffect(() => {
@@ -279,6 +284,7 @@ export default function LoadingScreen({ next }: LoadingScreenProps) {
 
       <div className="absolute inset-0 bg-black/20" />
 
+      {/* Ambient background processing images */}
       <div className="absolute inset-0 pointer-events-none">
         {images.map((image, index) => {
           const filename = image.split("/").pop();
@@ -288,10 +294,7 @@ export default function LoadingScreen({ next }: LoadingScreenProps) {
             <motion.img
               key={image}
               src={`${BACKEND_URL}/uploads/${jobId}/${filename}`}
-              initial={{
-                opacity: 0,
-                scale: 1.08,
-              }}
+              initial={{ opacity: 0.6, scale: 1.08 }}
               animate={{
                 opacity: [0.08, 0.14, 0.08],
                 scale: [1, 1.03, 1],
@@ -329,12 +332,7 @@ export default function LoadingScreen({ next }: LoadingScreenProps) {
       </div>
 
       <div className="absolute inset-0 overflow-hidden">
-        <SwirlWords
-          words={words}
-          jobStatus={status}
-          elapsedMs={elapsedMs}
-          onNext={next}
-        />
+        <SwirlWords words={words} jobStatus={status} onNext={next} />
       </div>
     </main>
   );

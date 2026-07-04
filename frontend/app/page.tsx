@@ -8,7 +8,7 @@ import UploadScreen from "@/components/UploadScreen";
 import UploadScreenTwo from "@/components/UploadScreenTwo";
 import UploadScreenThree from "@/components/UploadScreenThree";
 import MemoryScreen from "@/components/MemoryScreen";
-import LoadingScreen from "@/components/Loading/LoadingScreen";
+import LoadingScreen from "@/components/LoadingScreen";
 import ResultScreen from "@/components/ResultScreen";
 
 export default function Home() {
