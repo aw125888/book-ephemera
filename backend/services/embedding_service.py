@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import requests
 
-# GPU_SERVER_URL = "http://127.0.0.1:18760"
+GPU_SERVER_URL = "http://127.0.0.1:18760"
 
 #name of machine running CPU backend
-GPU_SERVER_URL = "http://127.0.0.1:7860"
+# GPU_SERVER_URL = "http://127.0.0.1:7860"
 
 
 def recommend_book(query: str):

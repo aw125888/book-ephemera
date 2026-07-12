@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL!;
 const JOB_KEY = "book-ephemera-job-id";
 
 type JobStatus = "processing" | "ready" | "error" | "idle";
@@ -94,15 +94,15 @@ function SwirlWords({
   words,
   jobStatus,
   onNext,
-  nextLabel = "Ready! ->",
-  bakingLabel = "baking",
+  nextLabel = "Get Your Book Here ->",
+  bakingLabel = "Baking...Baking...",
 }: SwirlWordsProps) {
   const viewport = useViewport();
   
-  // 1. Cut the text off at a strict maximum of 48 words
+  // 1. Cut the text off at a strict maximum of 150 words
   const slicedWords = useMemo(() => {
     const shuffled = shuffleNotSame(words);
-    return shuffled.slice(0, 48);
+    return shuffled.slice(0, 150);
   }, [words]);
 
   const [elapsedMs, setElapsedMs] = useState(0);
@@ -151,7 +151,7 @@ function SwirlWords({
     <div className="relative h-full w-full overflow-hidden">
       {/* Baking State Overlay */}
       <div
-        className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1000 ${
+        className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1900 ${
           elapsedMs < BAKING_MS ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -170,13 +170,17 @@ function SwirlWords({
           const visible = elapsedMs >= revealAt;
 
           const ageMs = Math.max(0, elapsedMs - revealAt);
-          const ageSeconds = ageMs / 1000;
+const ageSeconds = ageMs / 1000;
 
-          const targetRadius = START_RADIUS + index * SPIRAL_RADIUS_STEP;
-          const baseRadius = Math.min(ageSeconds * DEPLOY_SPEED, targetRadius);
-          const angle = (baseRadius / SPIRAL_RADIUS_STEP) * SPIRAL_ANGLE_STEP - Math.PI / 2;
-          const wobble = Math.sin(ageSeconds * 3 + index * 0.5) * WOBBLE_SIZE;
-          const radius = Math.min(baseRadius + wobble, maxAllowedRadius);
+const radialGrowth = ageSeconds * DEPLOY_SPEED * 0.35; // slower outward motion
+const wobble = Math.sin(ageSeconds * 3 + index * 0.5) * WOBBLE_SIZE;
+
+const radius = START_RADIUS + radialGrowth + wobble;
+
+// tighter coil = more angle per pixel of radius
+const TIGHTNESS = 1.8;
+const angle =
+  (radius / SPIRAL_RADIUS_STEP) * SPIRAL_ANGLE_STEP * TIGHTNESS - Math.PI / 2;
 
           const x = centerX + Math.cos(angle) * radius;
           const y = centerY + Math.sin(angle) * radius;
@@ -294,9 +298,9 @@ export default function LoadingScreen({ next }: LoadingScreenProps) {
             <motion.img
               key={image}
               src={`${BACKEND_URL}/uploads/${jobId}/${filename}`}
-              initial={{ opacity: 0.6, scale: 1.08 }}
+              initial={{ opacity: 1, scale: 1.08 }}
               animate={{
-                opacity: [0.08, 0.14, 0.08],
+                opacity: [1, 0.14, 1],
                 scale: [1, 1.03, 1],
                 y: [-8, 12, -8],
               }}
@@ -322,7 +326,7 @@ export default function LoadingScreen({ next }: LoadingScreenProps) {
                 width: 340,
                 left: `${12 + index * 27}%`,
                 top: `${18 + index * 18}%`,
-                filter: "blur(3px) saturate(0.85)",
+                // filter: "blur(3px) saturate(0.85)",
                 mixBlendMode: "screen",
                 transform: `rotate(${index === 0 ? -12 : index === 1 ? 8 : -5}deg)`,
               }}

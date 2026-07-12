@@ -7,7 +7,7 @@ type UploadScreenTwoProps = {
   next: () => void;
 };
 
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL!;
 
 export default function UploadScreenTwo({ next }: UploadScreenTwoProps) {
   const [uploaded, setUploaded] = useState(false);
@@ -80,51 +80,83 @@ export default function UploadScreenTwo({ next }: UploadScreenTwoProps) {
           Now Another, Quick!
         </motion.h1>
 
-        {/* Upload */}
-        <motion.label
-          initial={{
-            x: -300,
-            opacity: 0,
-            rotate: -25,
-            scale: 0.9,
-          }}
-          animate={{
-            x: 0,
-            opacity: 1,
-            rotate: 0,
-            scale: 1,
-          }}
-          transition={{
-            duration: 1.2,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-        >
-          <motion.div
-            animate={{
-              rotate: [0, 2, 0, -2, 0],
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <input
-              type="file"
-              accept="image/*"
-              hidden
-              onChange={handleFileChange}
-              disabled={uploading}
-            />
+        ```tsx
+{/* Upload */}
+{uploaded ? (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.98 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+  >
+    <div className="relative flex h-64 w-64 items-center justify-center">
+      <motion.div
+        className="absolute h-64 w-64 rounded-full border-[3px] border-[#A855F7] bg-[#A855F7]/5"
+        initial={{ opacity: 1, scale: 1 }}
+        animate={{ opacity: 0, scale: 0.95 }}
+        transition={{ duration: 0.5 }}
+      />
 
-            <div className="flex h-64 w-64 items-center justify-center rounded-full border-[3px] border-[#A855F7] bg-[#A855F7]/5">
-              <span className="font-serif text-6xl text-[#A855F7]">
-                {uploading ? "..." : "+"}
-              </span>
-            </div>
-          </motion.div>
-        </motion.label>
+      <motion.span
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="relative z-10 font-serif text-2xl text-[#A855F7]"
+      >
+        Second One Down!
+      </motion.span>
+    </div>
+  </motion.div>
+) : (
+  <motion.label
+    initial={{
+      x: -300,
+      opacity: 0,
+      rotate: -25,
+      scale: 0.9,
+    }}
+    animate={{
+      x: 0,
+      opacity: 1,
+      rotate: 0,
+      scale: 1,
+    }}
+    transition={{
+      duration: 1.2,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+    className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${
+      uploading ? "pointer-events-none" : "cursor-pointer"
+    }`}
+  >
+    <motion.div
+      animate={{
+        rotate: [0, 2, 0, -2, 0],
+      }}
+      transition={{
+        duration: 12,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+      <input
+        type="file"
+        accept="image/*"
+        hidden
+        onChange={handleFileChange}
+        disabled={uploading}
+      />
+
+      <div className="flex h-64 w-64 items-center justify-center rounded-full border-[3px] border-[#A855F7] bg-[#A855F7]/5">
+        <span className="font-serif text-6xl text-[#A855F7]">
+          {uploading ? "..." : "+"}
+        </span>
+      </div>
+    </motion.div>
+  </motion.label>
+)}
+```
+
 
         {/* Next button */}
         {uploaded && (

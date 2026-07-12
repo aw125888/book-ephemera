@@ -8,7 +8,7 @@ type UploadScreenTextProps = {
 };
 
 const MAX_WORDS = 50;
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL!;
 
 function countWords(text: string) {
   return text.trim().split(/\s+/).filter(Boolean).length;

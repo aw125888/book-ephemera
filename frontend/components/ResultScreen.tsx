@@ -7,7 +7,7 @@ type ResultsScreenProps = {
   next: () => void;
 };
 
-const BACKEND_URL = "http://localhost:8000";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL!;
 
 type JobResponse = {
   status: string;
@@ -72,9 +72,9 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="absolute left-1/2 top-[8%] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serif text-5xl tracking-[-0.04em] text-gray-300"
+            className="absolute left-1/2 top-[12%] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serif text-5xl tracking-[-0.04em] text-gray-300"
           >
-            Your Next Read:
+            Your Sentiment 2 Novel:
           </motion.h1>
             <motion.div
               initial={{ opacity: 0, scale: 0.98, y: 10 }}
@@ -91,15 +91,6 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
                   />
                 </div>
               
-
-              <div className="max-w-2xl">
-                <div className="font-serif text-4xl tracking-[-0.04em] text-gray-100">
-                  {title}
-                </div>
-                <div className="mt-2 font-sans text-lg italic text-gray-300/90">
-                  {author}
-                </div>
-              </div>
             </motion.div>
           
         </AnimatePresence>
