@@ -1,7 +1,9 @@
 from __future__ import annotations
+
 import json
 from pathlib import Path
 from typing import Any, Dict, List
+
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -9,20 +11,15 @@ ROOT = Path(__file__).resolve().parents[2]
 BOOK_DIR = ROOT / "data" / "book"
 MODEL_NAME = "BAAI/bge-reranker-v2-gemma"
 
+device = "cuda" if torch.cuda.is_available() else "cpu"
+dtype = torch.float16 if device == "cuda" else torch.float32
+
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_NAME,
-    torch_dtype=torch.float16,
-).to("cpu")
+    torch_dtype=dtype,
+).to(device)
 model.eval()
-
-# DEVICE = "cpu"
-# model = AutoModelForCausalLM.from_pretrained(
-#     MODEL_NAME, 
-#     torch_dtype=torch.float32,
-# )
-# model.to(DEVICE)
-# model.eval()
 
 YES_TOKEN_ID = tokenizer("Yes", add_special_tokens=False)["input_ids"][0]
 
@@ -38,6 +35,7 @@ def join_list(value: Any) -> str:
     if value is None:
         return ""
     return str(value)
+
 
 def flatten_book(book: Dict[str, Any]) -> str:
     fp = book.get("fingerprint", {})
@@ -81,32 +79,6 @@ def load_books() -> List[Dict[str, Any]]:
     return books
 
 
-# def score_pair(query: str, passage: str) -> float:
-#     prompt = (
-#         "Given a query A and a passage B, determine whether the passage contains "
-#         "an answer to the query by providing a prediction of either 'Yes' or 'No'.\n\n"
-#         f"A: {query}\n"
-#         f"B: {passage}\n"
-#         "Answer:"
-#     )
-
-#     inputs = tokenizer(
-#         prompt,
-#         return_tensors="pt",
-#         truncation=True,
-#         max_length=4096,
-#     ).to(model.device)
-
-#     with torch.no_grad():
-#         outputs = model(**inputs)
-#         logits = outputs.logits[:, -1, :]
-
-#         if YES_TOKEN_ID >= logits.shape[-1]:
-#             raise ValueError("Yes token id is out of range for the model logits.")
-
-#         return float(logits[0, YES_TOKEN_ID].item())
-
-
 def score_pair(query: str, passage: str) -> float:
     prompt = (
         "Given an aesthetic fingerprint and a book fingerprint, "
@@ -121,7 +93,7 @@ def score_pair(query: str, passage: str) -> float:
         return_tensors="pt",
         truncation=True,
         max_length=4096,
-    ).to(model.device)
+    ).to(device)
 
     with torch.no_grad():
         outputs = model(**inputs)
@@ -132,7 +104,10 @@ def score_pair(query: str, passage: str) -> float:
 
         return float(logits[0, YES_TOKEN_ID].item())
 
+
 books = load_books()
+
+
 def rank_books(query: str) -> List[Dict[str, Any]]:
     if not books:
         raise ValueError(f"No books found in {BOOK_DIR}")
@@ -154,7 +129,6 @@ def rank_books(query: str) -> List[Dict[str, Any]]:
                 "author": book["author"],
                 "cover_image": book["cover_image"],
                 "goodreads_url": book["goodreads_url"],
-
                 "source_path": book["source_path"],
             }
         )

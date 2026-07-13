@@ -1,7 +1,11 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import List, Optional
 from uuid import uuid4
+import json
+import os
+
+from redis import Redis
 
 
 @dataclass
@@ -26,18 +30,29 @@ class Job:
     created_at: str = field(default_factory=lambda: datetime.utcnow().isoformat())
 
 
-jobs: Dict[str, Job] = {}
+redis_client = Redis.from_url(os.environ["REDIS_URL"], decode_responses=True)
 
 
-def create_job():
+def job_key(job_id: str) -> str:
+    return f"job:{job_id}"
+
+
+def save_job(job: Job) -> None:
+    redis_client.set(job_key(job.id), json.dumps(asdict(job)))
+
+
+def get_job(job_id: str) -> Optional[Job]:
+    raw = redis_client.get(job_key(job_id))
+    if not raw:
+        return None
+    data = json.loads(raw)
+    return Job(**data)
+
+
+def create_job() -> Job:
     job = Job(id=str(uuid4()))
-    jobs[job.id] = job
+    save_job(job)
     return job
-
-
-def get_job(job_id: str):
-    return jobs.get(job_id)
-
 
 
 def build_combined_text(job: Job) -> str:

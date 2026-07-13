@@ -1,20 +1,29 @@
 from __future__ import annotations
 
+import os
 import requests
 
-GPU_SERVER_URL = "http://127.0.0.1:18760"
-
-#name of machine running CPU backend
-# GPU_SERVER_URL = "http://127.0.0.1:7860"
+RUNPOD_URL = os.environ["RUNPOD_URL"]
+RUNPOD_API_KEY = os.environ["RUNPOD_API_KEY"]
 
 
 def recommend_book(query: str):
     response = requests.post(
-        f"{GPU_SERVER_URL}/rank",
-        json={"query": query},
+        f"{RUNPOD_URL}/runsync",
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {RUNPOD_API_KEY}",
+        },
+        json={
+            "input": {
+                "query": query,
+            }
+        },
         timeout=300,
     )
 
     response.raise_for_status()
 
-    return response.json()
+    data = response.json()
+
+    return data["output"]

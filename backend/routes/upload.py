@@ -5,7 +5,7 @@ import shutil
 from pydantic import BaseModel
 from fastapi import APIRouter, BackgroundTasks, File, HTTPException, UploadFile
 
-from backend.models.jobs import create_job, get_job, build_combined_text
+from backend.models.jobs import create_job, get_job, save_job, build_combined_text
 from backend.services.embedding_service import recommend_book
 from backend.services.openai_service import describe_image_semantic_fingerprint
 
@@ -28,6 +28,7 @@ def reset_job_for_rerun(job) -> None:
     job.cover_image = None
     job.goodreads_url = None
     job.error = None
+    save_job(job)
 
 
 def run_embedding(job_id: str) -> None:
@@ -42,9 +43,11 @@ def run_embedding(job_id: str) -> None:
         job.cover_image = result["cover_image"]
         job.goodreads_url = result["goodreads_url"]
         job.status = "ready"
+        save_job(job)
     except Exception as e:
         job.status = "error"
         job.error = str(e)
+        save_job(job)
 
 
 def maybe_start_embedding(job_id: str, background_tasks: Optional[BackgroundTasks] = None) -> None:
@@ -64,6 +67,7 @@ def maybe_start_embedding(job_id: str, background_tasks: Optional[BackgroundTask
     job.combined_text = build_combined_text(job)
     job.status = "embedding"
     job.embedding_started = True
+    save_job(job)
 
     if background_tasks is not None:
         background_tasks.add_task(run_embedding, job_id)
@@ -78,17 +82,20 @@ def process_image(job_id: str, slot: int, file_path: str) -> None:
 
     try:
         job.status = "processing"
+        save_job(job)
         paragraph = describe_image_semantic_fingerprint(file_path)
 
         while len(job.paragraphs) < slot:
             job.paragraphs.append("")
 
         job.paragraphs[slot - 1] = paragraph
+        save_job(job)
 
         maybe_start_embedding(job_id)
 
         if job.status != "embedding" and job.status != "ready":
             job.status = "collecting"
+            save_job(job)
 
     except Exception as e:
         job.status = "error"
@@ -139,6 +146,8 @@ async def upload_image(
         job.images.append(image_path_str)
     else:
         job.images[slot - 1] = image_path_str
+    
+    save_job(job)
 
     background_tasks.add_task(process_image, job_id, slot, image_path_str)
 
@@ -158,6 +167,7 @@ async def upload_text(job_id: str, request: TextRequest, background_tasks: Backg
         raise HTTPException(status_code=404, detail="Job not found")
 
     job.user_text = request.text.strip()
+    save_job(job)
     reset_job_for_rerun(job)
 
     maybe_start_embedding(job_id, background_tasks)

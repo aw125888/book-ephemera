@@ -102,7 +102,7 @@ return ( <main className="relative h-screen w-screen overflow-hidden">
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="absolute left-1/2 top-10 -translate-x-1/2 font-serif text-8xl tracking-[-0.04em] text-[#4A7CFF]"
+      className="absolute left-1/2 top-[clamp(20px,4vh,40px)] -translate-x-1/2 whitespace-nowrap font-serif text-[clamp(3rem,6vw,6rem)] tracking-[-0.04em] text-[#4A7CFF]"
     >
       Choose An Image...!
     </motion.h1>
@@ -113,9 +113,9 @@ return ( <main className="relative h-screen w-screen overflow-hidden">
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute right-[170px] top-40"
+        className="absolute right-[clamp(60px,10vw,170px)] top-[clamp(80px,15vh,160px)] ..."
       >
-        <div className="relative flex h-[260px] w-[260px] items-center justify-center">
+        <div className="relative flex h-[clamp(180px,22vw,260px)] w-[clamp(180px,22vw,260px)] items-center justify-center">
           <motion.svg
             viewBox="0 0 240 240"
             className="absolute inset-0 h-full w-full"
@@ -131,7 +131,7 @@ return ( <main className="relative h-screen w-screen overflow-hidden">
             />
           </motion.svg>
 
-          <span className="relative z-10 font-serif text-2xl text-[#4A7CFF]">
+          <span className="relative z-10 font-serif text-[clamp(1.2rem,2vw,1.5rem)] text-[#4A7CFF]">
             Done!
           </span>
         </div>
@@ -187,7 +187,7 @@ return ( <main className="relative h-screen w-screen overflow-hidden">
               />
             </svg>
 
-            <span className="relative z-10 font-serif text-5xl text-[#4A7CFF]">
+            <span className="relative z-10 font-serif text-[clamp(2rem,4vw,3rem)] text-[#4A7CFF]">
               {uploading ? "..." : "+"}
             </span>
           </div>
@@ -209,7 +209,7 @@ return ( <main className="relative h-screen w-screen overflow-hidden">
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         onClick={next}
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 font-serif text-4xl tracking-[-0.04em] text-[#4A7CFF] transition-transform duration-500 hover:translate-x-2"
+        className="fixed bottom-8 left-1/2 -translate-x-1/2 font-serif text-[clamp(2rem,3vw,2.25rem)] tracking-[-0.04em] text-[#4A7CFF] transition-transform duration-500 hover:translate-x-2"
       >
         Next →
       </motion.button>

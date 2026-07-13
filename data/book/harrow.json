@@ -1,0 +1,119 @@
+{
+  "book_title": "Harrow",
+  "author": "Joy Williams",
+  "cover": "harrow.jpg",
+  "goodreads_url": "https://www.goodreads.com/book/show/56376963-harrow", 
+  "fingerprint": {
+    "colors": [
+        "dusty taupe", 
+        "beige", 
+        "coffee bean", 
+        "olive bark", 
+        "taupe grey", 
+        "grey olive", 
+        "slate grey", 
+        "frosted mint", 
+        "barbie pink", 
+        "hyper magenta", 
+        "ultra violet", 
+        "seagrass", 
+        "dark emerald", 
+        "industrial blue", 
+        "true azure"
+
+    ],
+
+    "atmosphere": [
+        "stately villa", 
+        "southern hospitality", 
+        "passion", 
+        "drafty church", 
+        "backstories", 
+        "rotting doors", 
+        "left-behind structures", 
+        "bent columns", 
+        "scorpion-filled deserts", 
+        "empty hotel", 
+        "low-ceilings", 
+        "concrete"
+    ],
+
+    "things": [
+        "cotton candy", 
+        "fish", 
+        "grey plants", 
+        "horses", 
+        "speckled dogs", 
+        "freckles", 
+        "sweetness", 
+        "beautiful mothers", 
+        "dark muscles", 
+        "backward caps", 
+        "pistol",
+        "itchy sweaters", 
+        "threadbare socks", 
+        "stinky water", 
+        "drought", 
+        "oleander", 
+        "sticky perfume bottles", 
+        "metallic rain", 
+        "dry mouth", 
+        "stand-up comedy", 
+        "sit-com", 
+        "laugh track", 
+        "strangulation", 
+        "kamikaze", 
+        "mosquito", 
+        "parasite", 
+        "fat legs", 
+        "gun violence", 
+        "red chevrolet", 
+        "grandfather", 
+        "sphinx", 
+        "Egypt"
+    ],
+
+
+    "emotional_tones": [
+        "apathetic", 
+        "hopeful", 
+        "ironic", 
+        "unironic", 
+        "precocious", 
+        "hilarious", 
+        "dreadful", 
+        "sad", 
+        "wasteful", 
+        "soul-sucking", 
+        "beautiful", 
+        "misty", 
+        "confusing", 
+        "awaiting", 
+        "wandering", 
+        "curious", 
+        "defensive", 
+        "offensive", 
+        "regretful", 
+        "repent"
+
+
+],
+
+    "themes": [
+        "capitalism", 
+        "faith", 
+        "labryinth", 
+        "destruction", 
+        "ugly nature", 
+        "beautiful nature", 
+        "god", 
+        "godlessness"
+
+    ],
+
+    "voice": [ 
+        "an old man sucks on your bitten finger to remove the poison. His skin is peeling and gross. Is it actually poison...or something sweeter?"
+
+    ]
+  }
+}

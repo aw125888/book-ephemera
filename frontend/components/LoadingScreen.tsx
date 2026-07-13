@@ -94,7 +94,7 @@ function SwirlWords({
   words,
   jobStatus,
   onNext,
-  nextLabel = "Get Your Book Here ->",
+  nextLabel = "Press 2 Get Book",
   bakingLabel = "Baking...Baking...",
 }: SwirlWordsProps) {
   const viewport = useViewport();
@@ -283,7 +283,7 @@ export default function LoadingScreen({ next }: LoadingScreenProps) {
         playsInline
         className="fixed inset-0 h-full w-full object-cover"
       >
-        <source src="/swirlyBaby.mp4" type="video/mp4" />
+        <source src="/someFrenchFire.mp4" type="video/mp4" />
       </video>
 
       <div className="absolute inset-0 bg-black/20" />
@@ -298,13 +298,19 @@ export default function LoadingScreen({ next }: LoadingScreenProps) {
             <motion.img
               key={image}
               src={`${BACKEND_URL}/uploads/${jobId}/${filename}`}
-              initial={{ opacity: 1, scale: 1.08 }}
+              initial={{
+                  opacity: 0,
+                  scale: 0.9,
+                  filter: "blur(12px)",
+                }}
               animate={{
-                opacity: [1, 0.14, 1],
-                scale: [1, 1.03, 1],
+                opacity: [0, 0.35, 0.18, 0.35],
+                scale: [0.9, 1.02, 1],
+                filter: ["blur(12px)", "blur(3px)", "blur(3px)"],
                 y: [-8, 12, -8],
               }}
               transition={{
+                delay: index * 0.7,
                 opacity: {
                   duration: 8 + index * 2,
                   repeat: Infinity,

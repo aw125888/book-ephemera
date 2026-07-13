@@ -76,12 +76,12 @@ export default function UploadScreenText({ next }: UploadScreenTextProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="absolute left-1/2 top-[12%] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serif text-6xl tracking-[-0.04em] text-gray-400"
+          className="absolute left-1/2 top-[clamp(28px,12vh,100px)] -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-serif text-[clamp(2.5rem,5vw,4.5rem)] tracking-[-0.04em] text-gray-400"
         >
           Finally, A Sentiment Please.
         </motion.h1>
 
-        <p className="absolute left-1/2 top-[20%] -translate-x-1/2 whitespace-nowrap text-center font-serif text-base italic tracking-wide text-gray-300">
+        <p className="absolute left-1/2 top-[clamp(90px,20vh,180px)] -translate-x-1/2 whitespace-nowrap text-center font-serif text-[clamp(0.85rem,1.4vw,1rem)] italic tracking-wide text-gray-300">
           A Quote, A Lyric, A Memory...
           <br />
           Anything As Long As You Keep It Under 50 Words
@@ -99,17 +99,17 @@ export default function UploadScreenText({ next }: UploadScreenTextProps) {
                 setQuote(words.slice(0, MAX_WORDS).join(" "));
               }
             }}
-            className="h-40 w-96 resize-none border-none bg-transparent text-center font-serif text-2xl leading-8 text-gray-300 outline-none"
-            placeholder=""
+            className="h-[clamp(8rem,18vw,10rem)] w-[clamp(18rem,45vw,24rem)] resize-none border-none bg-transparent text-center font-serif text-[clamp(1.25rem,2.2vw,1.5rem)] leading-[clamp(1.8rem,3vw,2rem)] text-gray-300 outline-none"
+            placeholder="Write something."
           />
 
-          <div className="mt-2 text-center font-mono text-xs text-gray-400">
+          <div className="mt-2 text-center font-mono text-[clamp(0.65rem,1vw,0.75rem)] text-gray-400">
             {wordCount}/{MAX_WORDS}
           </div>
         </div>
 
         {error && (
-          <div className="absolute left-1/2 top-[68%] -translate-x-1/2 font-sans text-sm text-red-300">
+          <div className="absolute left-1/2 top-[clamp(60%,68vh,72%)] -translate-x-1/2 font-sans text-[clamp(0.75rem,1vw,0.875rem)] text-red-300">
             {error}
           </div>
         )}
@@ -121,7 +121,7 @@ export default function UploadScreenText({ next }: UploadScreenTextProps) {
             transition={{ duration: 0.5 }}
             onClick={handleNext}
             disabled={saving}
-            className="fixed bottom-10 left-1/2 -translate-x-1/2 font-serif text-4xl tracking-[-0.04em] text-gray-400 transition-transform duration-500 hover:translate-x-2 disabled:opacity-50"
+            className="fixed bottom-[clamp(20px,4vh,40px)] left-1/2 -translate-x-1/2 font-serif text-[clamp(1.75rem,3vw,2.25rem)] tracking-[-0.04em] text-gray-400 transition-transform duration-500 hover:translate-x-2 disabled:opacity-50"
           >
             {saving ? "Saving..." : "Next →"}
           </motion.button>
