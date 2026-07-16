@@ -28,6 +28,7 @@ def reset_job_for_rerun(job) -> None:
     job.cover_image = None
     job.goodreads_url = None
     job.error = None
+    job.paragraphs = []  
     save_job(job)
 
 
@@ -93,13 +94,17 @@ def process_image(job_id: str, slot: int, file_path: str) -> None:
 
         maybe_start_embedding(job_id)
 
-        if job.status != "embedding" and job.status != "ready":
+        job = get_job(job_id)
+        if not job:
+            return
+
+        if job.status not in {"embedding", "ready"}:
             job.status = "collecting"
             save_job(job)
-
     except Exception as e:
         job.status = "error"
         job.error = str(e)
+        save_job(job)
 
 
 @router.post("/jobs")

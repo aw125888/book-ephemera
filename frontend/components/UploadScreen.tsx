@@ -7,6 +7,11 @@ type UploadScreenOneProps = {
 next: () => void;
 };
 
+const uploadPos =
+  "absolute right-[clamp(60px,10vw,170px)] top-[clamp(80px,15vh,160px)]";
+const boxSize =
+  "relative flex h-[clamp(180px,22vw,260px)] w-[clamp(180px,22vw,260px)] items-center justify-center";
+  
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL!;
 
 export default function UploadScreenOne({ next }: UploadScreenOneProps) {
@@ -108,20 +113,36 @@ return ( <main className="relative h-screen w-screen overflow-hidden">
     </motion.h1>
 
     {/* Upload / Done */}
-    {uploaded ? (
+<div className={uploadPos}>
+  {!uploaded ? (
+    <motion.label
+      initial={{ x: -300, opacity: 0, rotate: -25, scale: 0.9 }}
+      animate={{ x: 0, opacity: 1, rotate: 0, scale: 1 }}
+      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      className={`block ${
+        uploading ? "pointer-events-none" : "cursor-pointer"
+      } group`}
+    >
       <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute right-[clamp(60px,10vw,170px)] top-[clamp(80px,15vh,160px)] ..."
+        animate={{ rotate: [0, 2, 0, -2, 0] }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
       >
-        <div className="relative flex h-[clamp(180px,22vw,260px)] w-[clamp(180px,22vw,260px)] items-center justify-center">
-          <motion.svg
+        <input
+          type="file"
+          accept="image/*"
+          hidden
+          disabled={uploading}
+          onChange={handleFileChange}
+        />
+
+        <div className={boxSize}>
+          <svg
             viewBox="0 0 240 240"
             className="absolute inset-0 h-full w-full"
-            initial={{ opacity: 1, scale: 1 }}
-            animate={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
           >
             <polygon
               points="120,8 145,88 232,88 160,138 186,222 120,174 54,222 80,138 8,88 95,88"
@@ -129,71 +150,44 @@ return ( <main className="relative h-screen w-screen overflow-hidden">
               stroke="#4A7CFF"
               strokeWidth="2.5"
             />
-          </motion.svg>
+          </svg>
 
-          <span className="relative z-10 font-serif text-[clamp(1.2rem,2vw,1.5rem)] text-[#4A7CFF]">
-            Done!
+          <span className="relative z-10 font-serif text-[clamp(2rem,4vw,3rem)] text-[#4A7CFF]">
+            {uploading ? "..." : "+"}
           </span>
         </div>
       </motion.div>
-    ) : (
-      <motion.label
-        initial={{
-          x: -300,
-          opacity: 0,
-          rotate: -25,
-          scale: 0.9,
-        }}
-        animate={{
-          x: 0,
-          opacity: 1,
-          rotate: 0,
-          scale: 1,
-        }}
-        transition={{
-          duration: 1.2,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className={`absolute right-[170px] top-40 ${
-          uploading ? "pointer-events-none" : "cursor-pointer"
-        } group`}
-      >
-        <motion.div
-          animate={{ rotate: [0, 2, 0, -2, 0] }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+    </motion.label>
+  ) : (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="pointer-events-none"
+    >
+      <div className={boxSize}>
+        <motion.svg
+          viewBox="0 0 240 240"
+          className="absolute inset-0 h-full w-full"
+          initial={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <input
-            type="file"
-            accept="image/*"
-            hidden
-            disabled={uploading}
-            onChange={handleFileChange}
+          <polygon
+            points="120,8 145,88 232,88 160,138 186,222 120,174 54,222 80,138 8,88 95,88"
+            fill="rgba(74,124,255,0.03)"
+            stroke="#4A7CFF"
+            strokeWidth="2.5"
           />
+        </motion.svg>
 
-          <div className="relative flex h-[260px] w-[260px] items-center justify-center">
-            <svg
-              viewBox="0 0 240 240"
-              className="absolute inset-0 h-full w-full"
-            >
-              <polygon
-                points="120,8 145,88 232,88 160,138 186,222 120,174 54,222 80,138 8,88 95,88"
-                fill="rgba(74,124,255,0.03)"
-                stroke="#4A7CFF"
-                strokeWidth="2.5"
-              />
-            </svg>
-
-            <span className="relative z-10 font-serif text-[clamp(2rem,4vw,3rem)] text-[#4A7CFF]">
-              {uploading ? "..." : "+"}
-            </span>
-          </div>
-        </motion.div>
-      </motion.label>
-    )}
+        <span className="relative z-10 font-serif text-[clamp(1.2rem,2vw,1.5rem)] text-[#4A7CFF]">
+          Done!
+        </span>
+      </div>
+    </motion.div>
+  )}
+</div>
 
     {/* Error */}
     {error && (

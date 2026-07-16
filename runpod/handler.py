@@ -14,13 +14,22 @@
 # def rank(request: RankRequest):
 #     return recommend_book(request.query)
 
-
 import runpod
+
+print("===== NEW IMAGE LOADED =====")
 
 from backend.services.gpu_embedding_service import recommend_book
 
 def handler(job):
+    print("Incoming job:", job)
+
     query = job["input"]["query"]
-    return recommend_book(query)
+    print("Query:", query)
+
+    result = recommend_book(query)
+
+    print("Result:", result)
+
+    return result
 
 runpod.serverless.start({"handler": handler})

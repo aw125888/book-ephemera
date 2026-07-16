@@ -6,7 +6,12 @@ import { useEffect, useMemo, useState } from "react";
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL!;
 const JOB_KEY = "book-ephemera-job-id";
 
-type JobStatus = "processing" | "ready" | "error" | "idle";
+type JobStatus =
+  | "collecting"
+  | "processing"
+  | "embedding"
+  | "ready"
+  | "error";
 
 type JobResponse = {
   status: string;
@@ -213,16 +218,16 @@ const angle =
         {showReadyButton && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <motion.button
-              key="next"
-              initial={{ opacity: 0, scale: 0.96, y: 8 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
-              onClick={onNext}
-              className="pointer-events-auto font-serif text-4xl font-light uppercase tracking-[0.25em] text-white transition-all duration-700 hover:tracking-[0.35em] hover:text-white/80"
-            >
-              {nextLabel}
-            </motion.button>
+            key="next"
+            initial={{ opacity: 0, scale: 0.96, y: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            onClick={onNext}
+            className="pointer-events-auto font-serif text-4xl tracking-[-0.04em] text-white transition-transform duration-500 hover:translate-x-2"
+          >
+            {nextLabel}
+          </motion.button>
           </div>
         )}
       </AnimatePresence>
