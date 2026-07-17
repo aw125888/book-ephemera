@@ -28,9 +28,7 @@ def reset_job_for_rerun(job) -> None:
     job.cover_image = None
     job.goodreads_url = None
     job.error = None
-    job.paragraphs = []  
     save_job(job)
-
 
 def run_embedding(job_id: str) -> None:
     job = get_job(job_id)
@@ -75,16 +73,13 @@ def maybe_start_embedding(job_id: str, background_tasks: Optional[BackgroundTask
     else:
         run_embedding(job_id)
 
-
 def process_image(job_id: str, slot: int, file_path: str) -> None:
-    job = get_job(job_id)
-    if not job:
-        return
-
     try:
-        job.status = "processing"
-        save_job(job)
         paragraph = describe_image_semantic_fingerprint(file_path)
+
+        job = get_job(job_id)
+        if not job:
+            return
 
         while len(job.paragraphs) < slot:
             job.paragraphs.append("")
@@ -94,17 +89,12 @@ def process_image(job_id: str, slot: int, file_path: str) -> None:
 
         maybe_start_embedding(job_id)
 
-        job = get_job(job_id)
-        if not job:
-            return
-
-        if job.status not in {"embedding", "ready"}:
-            job.status = "collecting"
-            save_job(job)
     except Exception as e:
-        job.status = "error"
-        job.error = str(e)
-        save_job(job)
+        job = get_job(job_id)
+        if job:
+            job.status = "error"
+            job.error = str(e)
+            save_job(job)
 
 
 @router.post("/jobs")
@@ -143,7 +133,7 @@ async def upload_image(
 
     image_path_str = str(file_path)
 
-    reset_job_for_rerun(job)
+
 
     if len(job.images) < slot:
         while len(job.images) < slot - 1:
@@ -173,8 +163,6 @@ async def upload_text(job_id: str, request: TextRequest, background_tasks: Backg
 
     job.user_text = request.text.strip()
     save_job(job)
-    reset_job_for_rerun(job)
-
     maybe_start_embedding(job_id, background_tasks)
 
     return {

@@ -107,24 +107,29 @@ function SwirlWords({
   // 1. Cut the text off at a strict maximum of 150 words
   const slicedWords = useMemo(() => {
     const shuffled = shuffleNotSame(words);
-    return shuffled.slice(0, 150);
+    return shuffled.slice(0, 100);
   }, [words]);
 
   const [elapsedMs, setElapsedMs] = useState(0);
+  const [startedAt] = useState(() => performance.now());
   const [showReadyButton, setShowReadyButton] = useState(false);
 
   useEffect(() => {
-    let raf = 0;
-    const startedAt = performance.now();
+  let raf: number;
 
-    const tick = () => {
-      setElapsedMs(performance.now() - startedAt);
-      raf = requestAnimationFrame(tick);
-    };
+  const tick = () => {
+    const elapsed = performance.now() - startedAt;
+
+    // Only update about 30 fps instead of 60.
+    setElapsedMs(Math.floor(elapsed / 33) * 33);
 
     raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
+  };
+
+  raf = requestAnimationFrame(tick);
+
+  return () => cancelAnimationFrame(raf);
+}, [startedAt]);
 
   const visibleCount = useMemo(() => {
     if (elapsedMs < BAKING_MS) return 0;
@@ -150,7 +155,6 @@ function SwirlWords({
 
   const centerX = viewport.width / 2;
   const centerY = viewport.height / 2;
-  const maxAllowedRadius = Math.min(viewport.width, viewport.height) * 0.45;
 
   return (
     <div className="relative h-full w-full overflow-hidden">

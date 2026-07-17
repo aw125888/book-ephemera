@@ -8,6 +8,7 @@ type ResultsScreenProps = {
 };
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL!;
+const JOB_KEY = "book-ephemera-job-id";
 
 type JobResponse = {
   status: string;
@@ -19,11 +20,12 @@ type JobResponse = {
 
 export default function ResultsScreen({ next }: ResultsScreenProps) {
   const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [goodreadsUrl, setGoodreadsUrl] = useState("");
 
   useEffect(() => {
-    const jobId = localStorage.getItem("book-ephemera-job-id");
+    const jobId = localStorage.getItem(JOB_KEY);
     if (!jobId) return;
 
     const loadJob = async () => {
@@ -33,6 +35,7 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
       const data: JobResponse = await response.json();
 
       if (data.title) setTitle(data.title);
+      if (data.author) setAuthor(data.author);
       if (data.cover_image) setCoverImage(data.cover_image);
       if (data.goodreads_url) setGoodreadsUrl(data.goodreads_url);
     };
@@ -44,13 +47,17 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
     ? coverImage.startsWith("http")
       ? coverImage
       : coverImage.startsWith("/")
-      ? `${BACKEND_URL}${coverImage}`
-      : `${BACKEND_URL}/covers/${coverImage}`
+        ? `${BACKEND_URL}${coverImage}`
+        : `${BACKEND_URL}/covers/${coverImage}`
     : "";
+
+  const handleBack = () => {
+    localStorage.removeItem(JOB_KEY);
+    next();
+  };
 
   return (
     <main className="relative h-screen w-screen overflow-hidden">
-      {/* Background */}
       <video
         autoPlay
         muted
@@ -61,12 +68,9 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
         <source src="/blueFishie.mp4" type="video/mp4" />
       </video>
 
-      {/* Overlay */}
       <div className="absolute inset-0 bg-black/20" />
 
-      {/* Content */}
       <div className="relative z-10 flex h-screen flex-col items-center px-6">
-        {/* Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,16 +80,12 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
           Your Sentiment 2 Novel:
         </motion.h1>
 
-        {/* Center Section */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-1 flex-col items-center justify-center gap-6 text-center"
         >
-
-
-          {/* Cover */}
           {coverSrc ? (
             <div className="overflow-hidden rounded-2xl shadow-[0_18px_50px_rgba(0,0,0,0.35)]">
               <img
@@ -100,7 +100,19 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
             </div>
           )}
 
-          {/* Goodreads */}
+          {/* {title && (
+            <div className="max-w-2xl">
+              <div className="font-serif text-[clamp(1.8rem,4vw,3rem)] tracking-[-0.04em] text-gray-100">
+                {title}
+              </div>
+              {author && (
+                <div className="mt-2 font-sans text-[clamp(1rem,1.6vw,1.25rem)] italic text-gray-300/90">
+                  {author}
+                </div>
+              )}
+            </div>
+          )} */}
+
           {goodreadsUrl && (
             <button
               type="button"
@@ -114,12 +126,11 @@ export default function ResultsScreen({ next }: ResultsScreenProps) {
           )}
         </motion.div>
 
-        {/* Back */}
         <motion.button
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          onClick={next}
+          onClick={handleBack}
           className="mb-[clamp(20px,4vh,40px)] font-serif text-[clamp(1.1rem,2vw,1.5rem)] tracking-[-0.04em] text-gray-300 transition-transform duration-500 hover:translate-x-2"
         >
           Back →
