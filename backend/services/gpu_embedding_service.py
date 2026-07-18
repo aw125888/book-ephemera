@@ -107,6 +107,8 @@ def rank_books(query: str) -> List[Dict[str, Any]]:
 
     ranked = sorted(scored, key=lambda item: item[0], reverse=True)
 
+    
+
     results: List[Dict[str, Any]] = []
     for rank, (score, book) in enumerate(ranked, start=1):
         results.append(
